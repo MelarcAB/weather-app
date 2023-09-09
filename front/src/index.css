@@ -1,0 +1,9 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+body {
+  background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+  min-height: 100vh; /* Establece el alto mínimo al 100% del viewport */
+  background-repeat: no-repeat; /* Evita que el degradado se repita */
+  background-attachment: fixed; /* Asegura que el fondo no se mueva con el desplazamiento */
+}
