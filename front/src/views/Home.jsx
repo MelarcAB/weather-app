@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { SearchInput } from '../components/SearchInput';
+import  SearchInput  from '../components/SearchInput';
 
 function Home() {
     return (
