@@ -44,8 +44,12 @@ const SearchInput = () => {
                         <Link to={`/city/${city.name}`} key={city.id}>
                             <div 
                                 className="cursor-pointer p-2 hover:bg-gray-300 hover:text-gray-700 transition duration-200 ease-in-out"
-                                onClick={() => console.log(city.name)}
+                                onClick={() => {
+                                    console.log(city.name);
+                                    setCities([]); // cerrar desplegable
+                                }}
                             >
+
                                 {city.name}
                             </div>
                         </Link>
