@@ -16,9 +16,30 @@ const getCities = async (q) => {
 
 };
 
+const getCityDetailsByName = async (city) => {
+    //primero se obtiene latitud y longitud
+    const cities = await getCities(city);
+    const lat = cities[0].latitude;
+    const long = cities[0].longitude;
+    //se obtiene el historico
+    const cityDetails = await getCityDetails(lat, long);
+    console.log(cityDetails);
+    return cityDetails;
+
+
+}
+
+
 const getCityDetails = async (lat,long) => {
     try {
-        const url = `${BACKEND_URL}/historical?lat=${lat}&long=${long}`;
+        
+        //validar si son null
+        if(lat==null || long==null){
+            return [];
+        }
+        console.log(lat);
+        console.log(long);
+        const url = `${BACKEND_URL}/historical?latitude=${lat}&longitude=${long}`;
         const cityDetails = axios.get(url)
             .then((response) => {
                 return response.data;
@@ -27,10 +48,10 @@ const getCityDetails = async (lat,long) => {
         return cityDetails;
 
     } catch (e) {
-        console.error(e);
+      //  console.error(e);
         return [];
     }
 
 }
 
-export { getCities, getCityDetails };
+export { getCities, getCityDetails,getCityDetailsByName };

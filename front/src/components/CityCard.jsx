@@ -11,19 +11,18 @@ export const CityCard = ({ cityName = "Barcelona" }) => {
 
     return (
         <div className="bg-black bg-opacity-60 w-60 sm:w-72 md:w-96 p-5 rounded-lg shadow-lg flex flex-col space-y-4 transition-transform transform hover:scale-105 hover:shadow-xl">
-            <div className="text-center">
-                <h1 className="text-xl sm:text-2xl text-white font-semibold">{cityName}</h1>
-                <p className="text-white">{currentDate}</p>
+            <div className="text-center mb-4">
+                <h1 className="text-xl sm:text-2xl text-white font-semibold">{currentDate}</h1>
             </div>
             <div className="grid grid-cols-2 gap-4">
-                <WeatherInfo time="12 AM" temp="18°C" icon={<WbSunnyIcon style={{ color: 'yellow', transition: 'opacity 0.3s', opacity: 0.8 }} className="hover:opacity-1" />} />
-                <WeatherInfo time="3 AM" temp="16°C" icon={<CloudIcon style={{ color: 'gray', transition: 'opacity 0.3s', opacity: 0.8 }} className="hover:opacity-1" />} />
-                <WeatherInfo time="6 AM" temp="15°C" icon={<GrainIcon style={{ color: 'lightblue', transition: 'opacity 0.3s', opacity: 0.8 }} className="hover:opacity-1" />} />
-                <WeatherInfo time="9 AM" temp="17°C" icon={<CloudIcon style={{ color: 'gray', transition: 'opacity 0.3s', opacity: 0.8 }} className="hover:opacity-1" />} />
-                <WeatherInfo time="12 PM" temp="20°C" icon={<WbSunnyIcon style={{ color: 'yellow', transition: 'opacity 0.3s', opacity: 0.8 }} className="hover:opacity-1" />} />
-                <WeatherInfo time="3 PM" temp="22°C" icon={<WbSunnyIcon style={{ color: 'yellow', transition: 'opacity 0.3s', opacity: 0.8 }} className="hover:opacity-1" />} />
-                <WeatherInfo time="6 PM" temp="21°C" icon={<CloudIcon style={{ color: 'gray', transition: 'opacity 0.3s', opacity: 0.8 }} className="hover:opacity-1" />} />
-                <WeatherInfo time="9 PM" temp="19°C" icon={<GrainIcon style={{ color: 'lightblue', transition: 'opacity 0.3s', opacity: 0.8 }} className="hover:opacity-1" />} />
+                <WeatherInfo time="12 AM" temp="18°C" icon={<WbSunnyIcon fontSize="large" style={{ color: 'yellow' }} />} />
+                <WeatherInfo time="3 AM" temp="16°C" icon={<CloudIcon fontSize="large" style={{ color: 'gray' }} />} />
+                <WeatherInfo time="6 AM" temp="15°C" icon={<GrainIcon fontSize="large" style={{ color: 'lightblue' }} />} />
+                <WeatherInfo time="9 AM" temp="17°C" icon={<CloudIcon fontSize="large" style={{ color: 'gray' }} />} />
+                <WeatherInfo time="12 PM" temp="20°C" icon={<WbSunnyIcon fontSize="large" style={{ color: 'yellow' }} />} />
+                <WeatherInfo time="3 PM" temp="22°C" icon={<WbSunnyIcon fontSize="large" style={{ color: 'yellow' }} />} />
+                <WeatherInfo time="6 PM" temp="21°C" icon={<CloudIcon fontSize="large" style={{ color: 'gray' }} />} />
+                <WeatherInfo time="9 PM" temp="19°C" icon={<GrainIcon fontSize="large" style={{ color: 'lightblue' }} />} />
             </div>
         </div>
     )
@@ -34,7 +33,7 @@ const WeatherInfo = ({ time, temp, icon }) => (
         <p>{time}</p>
         <div className="flex items-center space-x-2">
             <span>{icon}</span>
-            <p>{temp}</p>
+            <p className="font-medium">{temp}</p>
         </div>
     </div>
 );

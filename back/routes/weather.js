@@ -24,15 +24,17 @@ router.get('/current', async (req, res) => {
 router.get('/historical', async (req, res) => {
     try {
         const { latitude, longitude } = req.query;
-        const response = await axios.get(`https://api.open-meteo.com/v1/forecast?&hourly=temperature_2m`, {
+        //const response = await axios.get(`https://api.open-meteo.com/v1/forecast?&hourly=temperature_2m`, {
+        const response = await axios.get(`https://api.open-meteo.com/v1/forecast`, {
             params: {
                 longitude: longitude,
                 latitude: latitude,
-                hourly: "temperature_2m",
+                hourly: "temperature_2m,temperature_2m,precipitation,rain",
             },
         });
         res.json(response.data);
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: 'Error fetching historical weather data' });
     }
 });
