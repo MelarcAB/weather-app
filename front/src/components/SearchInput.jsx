@@ -12,7 +12,6 @@ const SearchInput = () => {
             try {
                 if (inputValue.length > 2) {
                     const results = await getCities(inputValue);
-                    console.log("API Results:", results);
                     setCities(results);
                 } else {
                     setCities([]); // limpiar resultados si hay 2 caracteres o menos

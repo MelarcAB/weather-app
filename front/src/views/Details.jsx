@@ -11,8 +11,8 @@ function Details() {
     useEffect(() => {
         const fetchCityDetails = async () => {
             const cityDetails = await getCityDetailsByName(city);
-            console.log(cityDetails);
             const targetHours = ["00", "03", "06", "09", "12", "15", "18", "21"];
+            console.log(cityDetails.hourly);
             const groupedData = cityDetails.hourly.time
                 .map((time, index) => {
                     const hour = time.substring(11, 13);
@@ -20,7 +20,7 @@ function Details() {
                         //obtener el icono a mostrar en esta prioridad: 1. clear 2. partly cloudy 3. cloudy 4. rain 5. snow
                         let icon = "sun";
                         // si cloudcover,cloudcover_low,cloudcover_mid,cloudcover_high son >= 1 entonces es cloudy
-                        if (cityDetails.hourly.cloudcover[index] >= 3 || cityDetails.hourly.cloudcover_low[index] >= 3 || cityDetails.hourly.cloudcover_mid[index] >= 2 || cityDetails.hourly.cloudcover_high[index] >= 1) {
+                        if (cityDetails.hourly.cloudcover[index] > 3 || cityDetails.hourly.cloudcover_low[index] > 3 || cityDetails.hourly.cloudcover_mid[index] >= 2 || cityDetails.hourly.cloudcover_high[index] > 1) {
                             icon = "cloud";
                         }
                         //rain o showers > 0 entonces es rain
@@ -80,7 +80,6 @@ function Details() {
                 
                 // Agrupamos en un solo array
                 const array = [days.hoy, days.manana, days.pasado, days.siguiente, days.siguiente2, days.siguiente3, days.siguiente4,, days.siguiente5,, days.siguiente6];
-                console.log(array);
                 
                 setCityDetails(array);
                 

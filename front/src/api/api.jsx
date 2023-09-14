@@ -23,7 +23,6 @@ const getCityDetailsByName = async (city) => {
     const long = cities[0].longitude;
     //se obtiene el historico
     const cityDetails = await getCityDetails(lat, long);
-    console.log(cityDetails);
     return cityDetails;
 
 
@@ -37,8 +36,6 @@ const getCityDetails = async (lat,long) => {
         if(lat==null || long==null){
             return [];
         }
-        console.log(lat);
-        console.log(long);
         const url = `${BACKEND_URL}/historical?latitude=${lat}&longitude=${long}`;
         const cityDetails = axios.get(url)
             .then((response) => {
