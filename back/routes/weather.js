@@ -29,7 +29,7 @@ router.get('/historical', async (req, res) => {
             params: {
                 longitude: longitude,
                 latitude: latitude,
-                hourly: "temperature_2m,temperature_2m,precipitation,rain",
+                hourly: "temperature_2m,temperature_2m,precipitation,rain,showers,snowfall,cloudcover,cloudcover_low,cloudcover_mid,cloudcover_high",
             },
         });
         res.json(response.data);
