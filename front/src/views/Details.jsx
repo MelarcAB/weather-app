@@ -89,30 +89,35 @@ function Details() {
     }, [city]);
 
     return (
-        <div className="container mx-auto px-4 ">
-            <div className="mb-8 w-full flex justify-center pt-10">
+        <div className="min-h-screen bg-gradient-to-b from-blue-200 to-blue-500 flex flex-col items-center justify-start p-5">
+            {/* Encabezado con input de búsqueda */}
+            <div className="w-full max-w-lg mt-10 mb-8">
                 <SearchInput />
             </div>
-            <div className="flex justify-center">
-                <h1 className="text-4xl font-semibold text-white">{city}</h1>
+    
+            {/* Título de la ciudad */}
+            <div className="flex justify-center w-full">
+                <h1 className="text-4xl font-semibold text-white mb-10">{city}</h1>
             </div>
-            <div className="flex justify-center">
-                <div className="flex flex-col items-center mt-10 space-y-10">
-                    {cityDetails && cityDetails.length > 0 && <BigCityCard data={cityDetails[0]} />}
-                    <div className="w-full max-w-7xl">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
-                            {cityDetails && cityDetails.length > 0 && <CityCard data={cityDetails[1]} />}
-                            {cityDetails && cityDetails.length > 0 && <CityCard data={cityDetails[2]} />}
-                            {cityDetails && cityDetails.length > 0 && <CityCard data={cityDetails[3]} />}
-                            {cityDetails && cityDetails.length > 0 && <CityCard data={cityDetails[4]} />}
-                            {cityDetails && cityDetails.length > 0 && <CityCard data={cityDetails[5]} />}
-                            {cityDetails && cityDetails.length > 0 && <CityCard data={cityDetails[6]} />}
-                        </div>
+    
+            {/* Detalles de la ciudad */}
+            <div className="flex flex-col items-center w-full space-y-10">
+                {cityDetails && cityDetails.length > 0 && <BigCityCard data={cityDetails[0]} />}
+                
+                <div className="w-full max-w-7xl">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
+                        {cityDetails && cityDetails.length > 0 && <CityCard data={cityDetails[0]} />}
+                        {cityDetails && cityDetails.length > 0 && <CityCard data={cityDetails[2]} />}
+                        {cityDetails && cityDetails.length > 0 && <CityCard data={cityDetails[3]} />}
+                        {cityDetails && cityDetails.length > 0 && <CityCard data={cityDetails[4]} />}
+                        {cityDetails && cityDetails.length > 0 && <CityCard data={cityDetails[5]} />}
+                        {cityDetails && cityDetails.length > 0 && <CityCard data={cityDetails[6]} />}
                     </div>
                 </div>
             </div>
         </div>
     );
+    
 
 
 

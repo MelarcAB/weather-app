@@ -4,10 +4,10 @@ const getCities = async (q) => {
     try {
         const cities = axios.get(`${BACKEND_URL}/cities?city=${q}`)
             .then((response) => {
-                return response.data.results;
+                return response.data.results || [];
             }
             );
-        return cities;
+        return cities || [];
 
     } catch (e) {
         console.error(e);
@@ -23,7 +23,7 @@ const getCityDetailsByName = async (city) => {
     const long = cities[0].longitude;
     //se obtiene el historico
     const cityDetails = await getCityDetails(lat, long);
-    return cityDetails;
+    return cityDetails || [];
 
 
 }
@@ -42,7 +42,7 @@ const getCityDetails = async (lat,long) => {
                 return response.data;
             }
             );
-        return cityDetails;
+        return cityDetails || [];
 
     } catch (e) {
       //  console.error(e);

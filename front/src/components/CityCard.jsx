@@ -7,48 +7,44 @@ import WaterDropIcon from '@mui/icons-material/WaterDrop';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 
 export const CityCard = ({ data }) => {
-    //formatada a dd/mm/yyyy
     const date = data[0].time.split('T')[0].split('-').reverse().join('/');
+    const times = ["12 AM", "3 AM", "6 AM", "9 AM", "12 PM", "3 PM", "6 PM", "9 PM"];
+
     const getIconComponent = (iconName) => {
         switch (iconName) {
             case "sun":
-                return <WbSunnyIcon fontSize="large" style={{ color: 'yellow' }} />;
+                return <WbSunnyIcon fontSize="large" style={{ color: '#FFA500' }} />;
             case "cloud":
-                return <CloudIcon fontSize="large" style={{ color: 'gray' }} />;
+                return <CloudIcon fontSize="large" style={{ color: '#555' }} />;
             case "rain":
-                return <GrainIcon fontSize="large" style={{ color: 'lightblue' }} />;
+                return <GrainIcon fontSize="large" style={{ color: '#4682B4' }} />;
             case "snow":
-                return <GrainIcon fontSize="large" style={{ color: 'white' }} />;
+                return <GrainIcon fontSize="large" style={{ color: '#B0C4DE' }} />;
             default:
-                return <WbSunnyIcon fontSize="large" style={{ color: 'yellow' }} />;
+                return <WbSunnyIcon fontSize="large" style={{ color: '#FFA500' }} />;
         }
     }
-    
-        return (
-        <div className="bg-black bg-opacity-60 w-60 sm:w-72 md:w-96 p-5 rounded-lg shadow-lg flex flex-col space-y-4 transition-transform transform hover:scale-105 hover:shadow-xl">
+
+    return (
+        <div className="bg-white bg-opacity-40 w-60 sm:w-72 md:w-96 p-5 rounded-lg shadow-lg flex flex-col space-y-4 transition-transform transform hover:scale-105 hover:shadow-xl">
             <div className="text-center mb-4">
-                <h1 className="text-xl sm:text-2xl text-white font-semibold">{date}</h1>
+                <h1 className="text-2xl text-black font-semibold">{date}</h1>
             </div>
             <div className="grid grid-cols-2 gap-4">
-                <WeatherInfo time="12 AM" temp={data[0].temperature} icon={getIconComponent(data[0].icon)} />
-                <WeatherInfo time="3 AM"  temp={data[1].temperature} icon={getIconComponent(data[1].icon)} />
-                <WeatherInfo time="6 AM"  temp={data[2].temperature} icon={getIconComponent(data[2].icon)} />
-                <WeatherInfo time="9 AM"  temp={data[3].temperature} icon= {getIconComponent(data[3].icon)} />
-                <WeatherInfo time="12 PM"  temp={data[4].temperature} icon= {getIconComponent(data[4].icon)} />
-                <WeatherInfo time="3 PM"  temp={data[5].temperature} icon=  {getIconComponent(data[5].icon)} />
-                <WeatherInfo time="6 PM"  temp={data[6].temperature} icon= {getIconComponent(data[6].icon)} />
-                <WeatherInfo time="9 PM"  temp={data[7].temperature} icon=  {getIconComponent(data[7].icon)} />
+                {data && data.map((detail, index) => (
+                    <WeatherInfo key={index} time={times[index]} temp={detail.temperature} icon={getIconComponent(detail.icon)} />
+                ))}
             </div>
         </div>
     )
 }
 
 const WeatherInfo = ({ time, temp, icon }) => (
-    <div className="flex justify-between items-center text-white border-b border-gray-600 pb-2 hover:bg-opacity-70 hover:bg-black transition-all duration-300 rounded">
+    <div className="flex justify-between items-center text-black border-b border-gray-400 pb-2 hover:bg-opacity-70 hover:bg-gray-200 transition-all duration-300 rounded">
         <p>{time}</p>
         <div className="flex items-center space-x-2">
             <span>{icon}</span>
-            <p className="font-medium">{temp}</p>
+            <p className="font-medium">{temp} ºC</p>
         </div>
     </div>
 );
